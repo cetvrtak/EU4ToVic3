@@ -991,6 +991,9 @@
     <ClCompile Include="..\EU4ToVic3\Source\Mappers\CultureMapper\TraitDefinitionLoader\TraitDefinitionLoader.cpp">
       <Filter>Mappers\CultureMapper\TraitDefinitionLoader</Filter>
     </ClCompile>
+    <ClCompile Include="..\EU4ToVic3\Source\Output\outDiplomaticPlays\outWars.cpp">
+      <Filter>Output\outDiplomaticPlays</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\EU4ToVic3\Source\EU4World\World.h">
@@ -1698,6 +1701,9 @@
     </ClInclude>
     <ClInclude Include="..\EU4ToVic3\Source\Mappers\CultureMapper\TraitDefinitionLoader\TraitDefinitionLoader.h">
       <Filter>Mappers\CultureMapper\TraitDefinitionLoader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\EU4ToVic3\Source\Output\outDiplomaticPlays\outWars.h">
+      <Filter>Output\outDiplomaticPlays</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

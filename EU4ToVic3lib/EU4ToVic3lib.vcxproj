@@ -140,6 +140,7 @@
     <ClCompile Include="..\EU4ToVic3\Source\Output\outCultures\outCultures.cpp" />
     <ClCompile Include="..\EU4ToVic3\Source\Output\outDiplomacy\outDiplomacy.cpp" />
     <ClCompile Include="..\EU4ToVic3\Source\Output\outDiplomaticPlays\outDiplomaticPlays.cpp" />
+    <ClCompile Include="..\EU4ToVic3\Source\Output\outDiplomaticPlays\outWars.cpp" />
     <ClCompile Include="..\EU4ToVic3\Source\Output\outFlagDefinitions\outFlagDefinitions.cpp" />
     <ClCompile Include="..\EU4ToVic3\Source\Output\outLocalizations\outLocalizations.cpp" />
     <ClCompile Include="..\EU4ToVic3\Source\Output\outMetadataFile\outMetadataFile.cpp" />
@@ -368,6 +369,7 @@
     <ClInclude Include="..\EU4ToVic3\Source\Output\outCultures\outCultures.h" />
     <ClInclude Include="..\EU4ToVic3\Source\Output\outDiplomacy\outDiplomacy.h" />
     <ClInclude Include="..\EU4ToVic3\Source\Output\outDiplomaticPlays\outDiplomaticPlays.h" />
+    <ClInclude Include="..\EU4ToVic3\Source\Output\outDiplomaticPlays\outWars.h" />
     <ClInclude Include="..\EU4ToVic3\Source\Output\outFlagDefinitions\outFlagDefinitions.h" />
     <ClInclude Include="..\EU4ToVic3\Source\Output\outLocalizations\outLocalizations.h" />
     <ClInclude Include="..\EU4ToVic3\Source\Output\outMetadataFile\outMetadataFile.h" />

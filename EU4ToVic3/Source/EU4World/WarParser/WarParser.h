@@ -15,6 +15,11 @@ class WarParser: commonItems::parser
 	[[nodiscard]] const auto& getDefenders() const { return defenders; }
 	[[nodiscard]] const auto& getName() const { return name; }
 
+	void setDetails(const WarDetails& details_) { details = details_; }
+	void setAttackers(const std::vector<std::string>& attackers_) { attackers = attackers_; }
+	void setDefenders(const std::vector<std::string>& defenders_) { defenders = defenders_; }
+	void setName(const std::string& name_) { name = name_; }
+
   private:
 	void registerKeys();
 

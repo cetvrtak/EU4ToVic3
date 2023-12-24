@@ -14,6 +14,7 @@
 #include "Mappers/CountryMapper/CountryMapper.h"
 #include "PopManager/PopManager.h"
 #include "TechValues/TechValues.h"
+#include "WarParser/WarParser.h"
 #include <cmath>
 #include <numeric>
 #include <ranges>
@@ -1278,4 +1279,45 @@ void V3::PoliticalManager::distributeColonialClaims(const ClayManager& clayManag
 	}
 
 	Log(LogLevel::Info) << "<> Distributed " << colonialCounter << " colonial claims and " << destinyCounter << " manifest destiny claims.";
+}
+
+void V3::PoliticalManager::convertWars(const std::vector<EU4::WarParser>& srcWars, const mappers::CountryMapper& countryMapper)
+{
+	Log(LogLevel::Info) << "-> Starting Wars";
+	for (const auto& war: srcWars)
+	{
+		const auto& warGoal = war.getDetails().warGoalType;
+		Log(LogLevel::Info) << "\t" << war.getName() << " -> " << warGoal;
+
+		auto convertedWar = war;
+
+		std::vector<std::string> attackers;
+		for (const auto& attacker: war.getAttackers())
+		{
+			if (const auto& vic3AttackerTag = countryMapper.getV3Tag(attacker); vic3AttackerTag)
+			{
+				attackers.push_back(*vic3AttackerTag);
+			}
+		}
+		convertedWar.setAttackers(std::move(attackers));
+
+		std::vector<std::string> defenders;
+		for (const auto& defender: war.getDefenders())
+		{
+			if (const auto& vic3DefenderTag = countryMapper.getV3Tag(defender); vic3DefenderTag)
+			{
+				defenders.push_back(*vic3DefenderTag);
+			}
+		}
+		convertedWar.setDefenders(std::move(defenders));
+
+		if (warGoal == "defend_capital_independence")
+		{
+			EU4::WarDetails details;
+			details.warGoalType = "dp_independence";
+			convertedWar.setDetails(std::move(details));
+		}
+
+		wars.push_back(convertedWar);
+	}
 }

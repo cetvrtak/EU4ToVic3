@@ -33,6 +33,7 @@ class EU4LocalizationLoader;
 class Country;
 class CultureLoader;
 class ReligionLoader;
+class WarParser;
 } // namespace EU4
 namespace mappers
 {
@@ -82,6 +83,7 @@ class PoliticalManager
 		 bool downTiers,
 		 bool vn = false) const;
 	void addCountry(const std::pair<std::string, std::shared_ptr<Country>>& country) { countries.emplace(country); }
+	void convertWars(const std::vector<EU4::WarParser>& wars, const mappers::CountryMapper& countryMapper);
 
 	[[nodiscard]] const auto& getCountries() const { return countries; }
 	[[nodiscard]] std::shared_ptr<Country> getCountry(const std::string& v3Tag) const;
@@ -90,6 +92,7 @@ class PoliticalManager
 	[[nodiscard]] bool isTagDecentralized(const std::string& v3Tag) const;
 	[[nodiscard]] std::map<std::string, Law> getLawsMap() const { return lawMapper.getLaws(); }
 	[[nodiscard]] const auto& getMajorFormables() const { return majorFormablesLoader.getMajorFormables(); }
+	[[nodiscard]] const auto& getWars() const { return wars; }
 
 	void determineAndApplyWesternization(const mappers::CultureMapper& cultureMapper,
 		 const mappers::ReligionMapper& religionMapper,
@@ -157,6 +160,8 @@ class PoliticalManager
 	VanillaCharacterLoader vanillaCharacterLoader;
 	VanillaDiplomaticPlayLoader vanillaDiplomaticPlayLoader;
 	MajorFormablesLoader majorFormablesLoader;
+
+	std::vector<EU4::WarParser> wars;
 };
 } // namespace V3
 #endif // POLITICAL_MANAGER_H

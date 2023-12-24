@@ -138,6 +138,7 @@ V3::World::World(const Configuration& configuration, const EU4::World& sourceWor
 	politicalManager.setupLaws();
 	politicalManager.convertDiplomacy(sourceWorld.getDiplomacy().getAgreements());
 	politicalManager.convertRivals();
+	politicalManager.convertWars(sourceWorld.getWars(), *countryMapper);
 	politicalManager.convertTruces(datingData.lastEU4Date);
 	if (configuration.configBlock.vn)
 	{
