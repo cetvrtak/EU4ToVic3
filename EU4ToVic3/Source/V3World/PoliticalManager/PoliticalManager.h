@@ -21,6 +21,7 @@
 #include "ModLoader/ModFilesystem.h"
 #include "PopulationSetupMapper/PopulationSetupMapper.h"
 #include "TechSetupMapper/TechSetupMapper.h"
+#include "WargoalMapper/WargoalMapper.h"
 #include <map>
 #include <memory>
 #include <string>
@@ -64,6 +65,7 @@ class PoliticalManager
 	void loadLawMapperRules(const std::string& filePath);
 	void loadLawDefinitions(const commonItems::ModFilesystem& modFS);
 	void loadDiplomaticMapperRules(const std::string& filePath);
+	void loadWargoalMapperRules(const std::string& filePath);
 	void loadCharacterTraitMapperRules(const std::string& filePath);
 	void loadColonialTagMapperRules(const std::string& filePath);
 	void loadCountryTierMapperRules(const std::string& filePath);
@@ -148,6 +150,7 @@ class PoliticalManager
 	mappers::TechSetupMapper techSetupMapper;
 	mappers::LawMapper lawMapper;
 	mappers::DiplomaticMapper diplomaticMapper;
+	mappers::WargoalMapper wargoalMapper;
 	mappers::CharacterTraitMapper characterTraitMapper;
 	mappers::ColonialTagMapper colonialTagMapper;
 	mappers::CountryTierMapper countryTierMapper;

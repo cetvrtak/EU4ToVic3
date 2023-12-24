@@ -129,6 +129,11 @@ void V3::PoliticalManager::loadDiplomaticMapperRules(const std::string& filePath
 	diplomaticMapper.loadMappingRules(filePath);
 }
 
+void V3::PoliticalManager::loadWargoalMapperRules(const std::string& filePath)
+{
+	wargoalMapper.loadMappingRules(filePath);
+}
+
 void V3::PoliticalManager::loadCharacterTraitMapperRules(const std::string& filePath)
 {
 	characterTraitMapper.loadMappingRules(filePath);
@@ -1311,10 +1316,10 @@ void V3::PoliticalManager::convertWars(const std::vector<EU4::WarParser>& srcWar
 		}
 		convertedWar.setDefenders(std::move(defenders));
 
-		if (warGoal == "defend_capital_independence")
+		if (const auto& vic3Wargoal = wargoalMapper.getVic3Wargoal(war.getDetails().warGoalType); vic3Wargoal)
 		{
 			EU4::WarDetails details;
-			details.warGoalType = "dp_independence";
+			details.warGoalType = *vic3Wargoal;
 			convertedWar.setDetails(std::move(details));
 		}
 

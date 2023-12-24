@@ -133,6 +133,7 @@
     <ClCompile Include="..\EU4ToVic3\Source\Mappers\TechSetupMapper\TechSetupMapping.cpp" />
     <ClCompile Include="..\EU4ToVic3\Source\Mappers\VNColonialMapper\VNColonialMapper.cpp" />
     <ClCompile Include="..\EU4ToVic3\Source\Mappers\VNColonialMapper\VNColonialMapping.cpp" />
+    <ClCompile Include="..\EU4ToVic3\Source\Mappers\WargoalMapper\WargoalMapper.cpp" />
     <ClCompile Include="..\EU4ToVic3\Source\Output\outBuildings\outBuildings.cpp" />
     <ClCompile Include="..\EU4ToVic3\Source\Output\outCharacters\outCharacters.cpp" />
     <ClCompile Include="..\EU4ToVic3\Source\Output\outCoAs\outCoAa.cpp" />
@@ -362,6 +363,7 @@
     <ClInclude Include="..\EU4ToVic3\Source\Mappers\TechSetupMapper\TechSetupMapping.h" />
     <ClInclude Include="..\EU4ToVic3\Source\Mappers\VNColonialMapper\VNColonialMapper.h" />
     <ClInclude Include="..\EU4ToVic3\Source\Mappers\VNColonialMapper\VNColonialMapping.h" />
+    <ClInclude Include="..\EU4ToVic3\Source\Mappers\WargoalMapper\WargoalMapper.h" />
     <ClInclude Include="..\EU4ToVic3\Source\Output\outBuildings\outBuildings.h" />
     <ClInclude Include="..\EU4ToVic3\Source\Output\outCharacters\outCharacters.h" />
     <ClInclude Include="..\EU4ToVic3\Source\Output\outCoAs\outCoAa.h" />

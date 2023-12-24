@@ -50,6 +50,7 @@ V3::World::World(const Configuration& configuration, const EU4::World& sourceWor
 	politicalManager.loadLawMapperRules("configurables/law_map.txt");
 	politicalManager.loadLawDefinitions(dwFS);
 	politicalManager.loadDiplomaticMapperRules("configurables/diplomatic_map.txt");
+	politicalManager.loadWargoalMapperRules("configurables/war_goal_map.txt");
 	politicalManager.loadCharacterTraitMapperRules("configurables/character_traits.txt");
 	politicalManager.loadColonialTagMapperRules("configurables/colonial_tags.txt");
 	politicalManager.loadCountryTierMapperRules("configurables/country_tiers.txt");

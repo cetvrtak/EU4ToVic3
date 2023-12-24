@@ -349,6 +349,9 @@
     <Filter Include="Mappers\CultureMapper\TraitDefinitionLoader">
       <UniqueIdentifier>{e9a649e2-1be2-4b2e-95ea-4ba4125523d3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Mappers\WargoalMapper">
+      <UniqueIdentifier>{1b38dff8-7e4f-4015-a814-5ee8fae14cec}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\EU4ToVic3\Source\EU4World\World.cpp">
@@ -993,6 +996,9 @@
     </ClCompile>
     <ClCompile Include="..\EU4ToVic3\Source\Output\outDiplomaticPlays\outWars.cpp">
       <Filter>Output\outDiplomaticPlays</Filter>
+    </ClCompile>
+    <ClCompile Include="..\EU4ToVic3\Source\Mappers\WargoalMapper\WargoalMapper.cpp">
+      <Filter>Mappers\WargoalMapper</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1704,6 +1710,9 @@
     </ClInclude>
     <ClInclude Include="..\EU4ToVic3\Source\Output\outDiplomaticPlays\outWars.h">
       <Filter>Output\outDiplomaticPlays</Filter>
+    </ClInclude>
+    <ClInclude Include="..\EU4ToVic3\Source\Mappers\WargoalMapper\WargoalMapper.h">
+      <Filter>Mappers\WargoalMapper</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
