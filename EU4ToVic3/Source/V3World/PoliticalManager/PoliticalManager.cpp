@@ -12,6 +12,7 @@
 #include "Loaders/LawLoader/LawLoader.h"
 #include "Log.h"
 #include "Mappers/CountryMapper/CountryMapper.h"
+#include "Mappers/ProvinceMapper/ProvinceMapper.h"
 #include "PopManager/PopManager.h"
 #include "TechValues/TechValues.h"
 #include "WarParser/WarParser.h"
@@ -1286,14 +1287,14 @@ void V3::PoliticalManager::distributeColonialClaims(const ClayManager& clayManag
 	Log(LogLevel::Info) << "<> Distributed " << colonialCounter << " colonial claims and " << destinyCounter << " manifest destiny claims.";
 }
 
-void V3::PoliticalManager::convertWars(const std::vector<EU4::WarParser>& srcWars, const mappers::CountryMapper& countryMapper)
+void V3::PoliticalManager::convertWars(const std::vector<EU4::WarParser>& srcWars,
+	 const mappers::CountryMapper& countryMapper,
+	 const mappers::ProvinceMapper& provinceMapper,
+	 const std::map<std::string, std::shared_ptr<State>>& states)
 {
 	Log(LogLevel::Info) << "-> Starting Wars";
 	for (const auto& war: srcWars)
 	{
-		const auto& warGoal = war.getDetails().warGoalType;
-		Log(LogLevel::Info) << "\t" << war.getName() << " -> " << warGoal;
-
 		auto convertedWar = war;
 
 		std::vector<std::string> attackers;
@@ -1316,12 +1317,34 @@ void V3::PoliticalManager::convertWars(const std::vector<EU4::WarParser>& srcWar
 		}
 		convertedWar.setDefenders(std::move(defenders));
 
+		auto details = war.getDetails();
 		if (const auto& vic3Wargoal = wargoalMapper.getVic3Wargoal(war.getDetails().warGoalType); vic3Wargoal)
 		{
-			EU4::WarDetails details;
 			details.warGoalType = *vic3Wargoal;
-			convertedWar.setDetails(std::move(details));
 		}
+
+		const auto& targetProvinces = provinceMapper.getV3Provinces(war.getDetails().targetProvinceID);
+		if (targetProvinces.empty())
+		{
+			const auto& originalDefender = convertedWar.getDefenders()[0];
+			if (countries.contains(originalDefender))
+			{
+				const auto& targetCapitalState = countries.at(originalDefender)->getProcessedData().capitalStateName;
+				details.targetTag = targetCapitalState;
+			}
+		}
+		for (const auto& province: targetProvinces)
+		{
+			const auto& stateItr = std::find_if(states.begin(), states.end(), [province](const std::pair<std::string, std::shared_ptr<State>>& state) {
+				return state.second->getProvinces().contains(province);
+			});
+			if (stateItr != states.end())
+			{
+				details.targetTag = stateItr->first;
+				break;
+			}
+		}
+		convertedWar.setDetails(std::move(details));
 
 		wars.push_back(convertedWar);
 	}

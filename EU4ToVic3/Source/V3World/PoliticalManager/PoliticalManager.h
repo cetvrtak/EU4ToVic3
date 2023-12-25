@@ -40,12 +40,14 @@ namespace mappers
 {
 class CountryMapper;
 class CultureMapper;
+class ProvinceMapper;
 class ReligionMapper;
 } // namespace mappers
 namespace V3
 {
 struct Demographic;
 class Country;
+class State;
 class SubState;
 class PopManager;
 class ClayManager;
@@ -85,7 +87,10 @@ class PoliticalManager
 		 bool downTiers,
 		 bool vn = false) const;
 	void addCountry(const std::pair<std::string, std::shared_ptr<Country>>& country) { countries.emplace(country); }
-	void convertWars(const std::vector<EU4::WarParser>& wars, const mappers::CountryMapper& countryMapper);
+	void convertWars(const std::vector<EU4::WarParser>& wars,
+		 const mappers::CountryMapper& countryMapper,
+		 const mappers::ProvinceMapper& provinceMapper,
+		 const std::map<std::string, std::shared_ptr<State>>& states);
 
 	[[nodiscard]] const auto& getCountries() const { return countries; }
 	[[nodiscard]] std::shared_ptr<Country> getCountry(const std::string& v3Tag) const;

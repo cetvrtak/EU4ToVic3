@@ -17,7 +17,7 @@ void OUT::outputWars(const std::string& outputName, const std::vector<EU4::WarPa
 		output << "\t\tcreate_diplomatic_play = {\n";
 		output << "\t\t\tname = \"" << war.getName() << "\"\n";
 		output << "\t\t\n";
-		output << "\t\t\ttarget_state = s:STATE_CASTILE.region_state:" << *war.getDefenders().begin() << "\n";
+		output << "\t\t\ttarget_state = s:" << war.getDetails().targetTag << ".region_state:" << *war.getDefenders().begin() << "\n";
 		output << "\t\t\t\n";
 		output << "\t\t\trequires_interest_marker = no\n";
 		output << "\t\t\twar = yes\n";
