@@ -14,6 +14,7 @@ class WarDetails: commonItems::convenientParser
 	// This is a storage container shared between EU4 and V3. Because war never changes.
 	int targetProvinceID = 0;
 	std::string warGoalType;
+	std::vector<std::tuple<std::string, std::string, std::string>> secondaryWargoals; // holder, type
 	std::string targetTag;
 	std::string warGoalClass;
 	date startDate;

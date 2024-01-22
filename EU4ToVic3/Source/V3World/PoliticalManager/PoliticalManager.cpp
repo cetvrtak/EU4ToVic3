@@ -1321,6 +1321,17 @@ void V3::PoliticalManager::convertWars(const std::vector<EU4::WarParser>& srcWar
 		if (const auto& vic3Wargoal = wargoalMapper.getVic3Wargoal(war.getDetails().warGoalType); vic3Wargoal)
 		{
 			details.warGoalType = *vic3Wargoal;
+
+			if (details.warGoalType == "dp_independence")
+			{
+				const auto& originalAttacker = convertedWar.getAttackers()[0];
+				if (countries.contains(originalAttacker))
+				{
+					const auto& targetCapitalState = countries.at(originalAttacker)->getProcessedData().capitalStateName;
+
+					details.secondaryWargoals.push_back(std::make_tuple(convertedWar.getDefenders()[0], "dp_make_vassal", targetCapitalState));
+				}
+			}
 		}
 
 		const auto& targetProvinces = provinceMapper.getV3Provinces(war.getDetails().targetProvinceID);
