@@ -60,7 +60,7 @@ class EconomyManager
 		 bool vn = false) const;
 	void assignSubStateCPBudgets(Configuration::ECONOMY economyType) const;
 	void balanceNationalBudgets() const;
-	void buildBuildings(const std::map<std::string, Law>& lawsMap) const;
+	void buildBuildings(const std::map<std::string, Law>& lawsMap, const std::vector<EU4::WarParser>& wars) const;
 	void setPMs() const;
 
 	[[nodiscard]] const auto& getCentralizedCountries() const { return centralizedCountries; }
@@ -116,6 +116,7 @@ class EconomyManager
 	void loadNationalBudgets(const std::string& filePath = "");
 	void loadTechMap(const commonItems::ModFilesystem& modFS);
 
+	void buildConscriptionCenters(const std::shared_ptr<Country>& country) const;
 
 	std::vector<std::shared_ptr<Country>> centralizedCountries;
 

@@ -203,7 +203,7 @@ V3::World::World(const Configuration& configuration, const EU4::World& sourceWor
 	Log(LogLevel::Progress) << "75 %";
 	economyManager.assignSubStateCPBudgets(configBlock.economy);
 	Log(LogLevel::Progress) << "76 %";
-	economyManager.buildBuildings(politicalManager.getLawsMap());
+	economyManager.buildBuildings(politicalManager.getLawsMap(), politicalManager.getWars());
 	economyManager.setPMs();
 
 	Log(LogLevel::Info) << "*** Goodbye, Vicky 3, and godspeed. ***";

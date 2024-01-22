@@ -17,6 +17,7 @@
 #include "Log.h"
 #include "PoliticalManager/Country/Country.h"
 #include "PoliticalManager/PoliticalManager.h"
+#include "WarParser/WarParser.h"
 #include <cmath>
 #include <iomanip>
 #include <numeric>
@@ -205,7 +206,7 @@ void V3::EconomyManager::balanceNationalBudgets() const
 	Log(LogLevel::Info) << "<> Industry Sectors Primed.";
 }
 
-void V3::EconomyManager::buildBuildings(const std::map<std::string, Law>& lawsMap) const
+void V3::EconomyManager::buildBuildings(const std::map<std::string, Law>& lawsMap, const std::vector<EU4::WarParser>& wars) const
 {
 	Log(LogLevel::Info) << "-> Building buildings.";
 	auto counter = 0;
@@ -239,7 +240,45 @@ void V3::EconomyManager::buildBuildings(const std::map<std::string, Law>& lawsMa
 			removeSubStateIfFinished(subStatesByBudget, subStatesByBudget.end() - 1, lawsMap);
 		}
 	}
+
+	Log(LogLevel::Info) << "\tDrafting everyone and his dog";
+	for (const auto& war: wars)
+	{
+		for (const auto& attackerTag: war.getAttackers())
+		{
+			const auto& attackerItr =
+				 std::find_if(centralizedCountries.begin(), centralizedCountries.end(), [attackerTag](const std::shared_ptr<Country>& country) {
+					 return attackerTag == country->getTag();
+				 });
+
+			if (attackerItr != centralizedCountries.end())
+				buildConscriptionCenters(*attackerItr);
+		}
+
+		for (const auto& defenderTag: war.getDefenders())
+		{
+			const auto& defenderItr =
+				 std::find_if(centralizedCountries.begin(), centralizedCountries.end(), [defenderTag](const std::shared_ptr<Country>& country) {
+					 return defenderTag == country->getTag();
+				 });
+
+			if (defenderItr != centralizedCountries.end())
+				buildConscriptionCenters(*defenderItr);
+		}
+	}
+
 	Log(LogLevel::Info) << "<> Built " << counter << " buildings world-wide.";
+}
+
+void V3::EconomyManager::buildConscriptionCenters(const std::shared_ptr<Country>& country) const
+{
+	for (const auto& subState: country->getSubStates())
+	{
+		Building conscriptionCenter;
+		conscriptionCenter.setName("building_conscription_center");
+		conscriptionCenter.setLevel(100);
+		subState->addBuilding(std::make_shared<Building>(conscriptionCenter));
+	}
 }
 
 double V3::EconomyManager::calculatePopDistanceFactor(const int countryPopulation, const double geoMeanPopulation)
