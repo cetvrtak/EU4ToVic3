@@ -1321,6 +1321,7 @@ void V3::PoliticalManager::convertWars(const std::vector<EU4::WarParser>& srcWar
 		if (const auto& vic3Wargoal = wargoalMapper.getVic3Wargoal(war.getDetails().warGoalType); vic3Wargoal)
 		{
 			details.warGoalType = *vic3Wargoal;
+			Log(LogLevel::Info) << "Wargoal: " << details.warGoalType;
 
 			if (details.warGoalType == "dp_independence")
 			{

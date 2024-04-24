@@ -50,13 +50,13 @@ APC = { #Apacheria, Apache People
 	
 	ai_will_do = { always = yes }
 }
-ARM = { #Armenia, Armenian People
-	use_culture_states = yes
-
-	required_states_fraction = 0.5
-	
-	ai_will_do = { always = yes }
-}
+#ARM = { #Armenia, Armenian People
+#	use_culture_states = yes
+#
+#	required_states_fraction = 0.5
+#	
+#	ai_will_do = { always = yes }
+#}
 ASA = { #New Africa, Afro-American People
 	use_culture_states = yes
 
@@ -379,13 +379,13 @@ DNK = { #Dinka, Dinka People
 	ai_will_do = { always = yes }
 }
 
-EGY = { #Egypt, Egyptian (Misri) People
-	use_culture_states = yes
-
-	required_states_fraction = 0.75
-	
-	ai_will_do = { always = yes }
-}
+#EGY = { #Egypt, Egyptian (Misri) People
+#	use_culture_states = yes
+#
+#	required_states_fraction = 0.75
+#	
+#	ai_will_do = { always = yes }
+#}
 EST = { #Estonia, Estonian People
 	use_culture_states = yes
 
@@ -1102,16 +1102,16 @@ SRA = { #Sara, Sara People
 	
 	ai_will_do = { always = yes }
 }
-SWI = { #Switzerland, Swiss People
-	states = {
-		STATE_EAST_SWITZERLAND
-		STATE_WEST_SWITZERLAND
-	}
-
-	required_states_fraction = 0.75
-	
-	ai_will_do = { always = yes }
-}
+#SWI = { #Switzerland, Swiss People
+#	states = {
+#		STATE_EAST_SWITZERLAND
+#		STATE_WEST_SWITZERLAND
+#	}
+#
+#	required_states_fraction = 0.75
+#	
+#	ai_will_do = { always = yes }
+#}
 TIB = { #Tibet, Tibetan People
 	use_culture_states = yes
 

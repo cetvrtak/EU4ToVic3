@@ -442,7 +442,7 @@ link = { name = "Zollern" vic3 = HOH } # Hohenzollern
 link = { name = "Waldeck" vic3 = WLD } # Waldeck
 link = { eu4 = BHA name = "Indian Empire" vic3 = BHT } # Bharat => India
 link = { name = "Michigan" vic3 = UOM } # Michigan
-link = { eu4 = CIR name = "Circassia" vic3 = CIR } # Circassia
+link = { eu4 = CIR name = "Circassia" vic3 = CHC } # Circassia
 link = { name = "Chechnya" vic3 = CHC } # Chechnya
 link = { eu4 = ASY name = "Assyria" vic3 = ASS } # Assyria
 link = { eu4 = KLM name = "Kalmyk" vic3 = KLM } # Kalmykia
@@ -698,7 +698,8 @@ link = { eu4 = BTU vic3 = B14 } # Butuan
 #link = { eu4 = ??? vic3 = B16 } # Barkly
 #link = { eu4 = ??? vic3 = B17 } # Bindal
 link = { eu4 = BRT vic3 = B18 } # Buryats => Buryaad Ulas
-link = { eu4 = BSH vic3 = B19 } # Bashkiria => Bashgirid
+link = { eu4 = BSH vic3 = KZH } # Bashkiria => Bashgirid
+link = { eu4 = Z4A vic3 = OZH } # Koi-Bagar (CK3) => Orta Juz
 #link = { eu4 = ??? vic3 = B20 } # Bolghars
 #link = { eu4 = ??? vic3 = B21 } # Burtas
 #link = { eu4 = ??? vic3 = B22 } # Brycheiniog

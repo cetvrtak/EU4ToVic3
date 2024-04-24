@@ -3,7 +3,7 @@
 version = "0.3C"
 name = "Craiova"
 source = "EU4"
-minSource = "1.35"
+minSource = "1.34.5"
 maxSource = "1.36"
 target = "Vic3"
 minTarget = "1.5"
